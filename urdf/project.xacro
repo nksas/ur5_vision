@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur">
+
+   <!-- import main macro -->
+   <xacro:include filename="$(find ur_description)/urdf/ur.xacro"/>
+
+</robot>
