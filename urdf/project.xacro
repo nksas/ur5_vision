@@ -3,5 +3,34 @@
 
    <!-- import main macro -->
    <xacro:include filename="$(find ur_description)/urdf/ur.xacro"/>
+   <xacro:include filename="$(find ur5_vision)/urdf/materials.xacro" />
+   
+   <link name="camera_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.034999999999999976 -2.6471228769145254e-06 -0.00018143953510629807"/>
+    <mass value="0.33085812216864385"/>
+    <inertia ixx="0.00018" ixy="0.0" ixz="0.0" iyy="3e-05" iyz="3e-06" izz="0.000185"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.415 -0.00104 -1.160818"/>
+    <geometry>
+      <mesh filename="package://ur5_vision/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://ur5_vision/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="camera_1" type="fixed">
+  <origin rpy="0 0 -1.57" xyz="1.0 1.0 1.0"/>
+  <parent link="base_link"/>
+  <child link="camera_link"/>
+</joint>
+   
 
 </robot>
