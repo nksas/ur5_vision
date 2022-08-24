@@ -1,0 +1,13 @@
+<launch>
+    <node name="red_box_depth_image" pkg="ur5_vision" type="find_red_objects.py" />
+  
+  <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" />
+
+  <node pkg="nodelet" type="nodelet" name="nodelet1"
+        args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+    
+    <remap from="camera_info" to="/info"/>
+    <remap from="image_rect" to="/red_image"/>
+    <remap from="points" to="/red_points"/>
+  </node>
+</launch>
